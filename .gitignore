@@ -31,6 +31,9 @@ MANIFEST
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
 *.manifest
 *.spec
+*.gz
+upmemupmem-2024.1.0-Linux-x86_64/
+upmem-2024.1.0-Linux-x86_64
 
 # Installer logs
 pip-log.txt
