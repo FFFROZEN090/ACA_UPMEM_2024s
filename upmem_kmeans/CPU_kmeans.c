@@ -153,6 +153,17 @@ int main()
         }
         printf(")\n");
     }
+    // Output results to CSV file
+    export_results(data_points, labels, n, dimensions);
+
+    // Freeing up memory
+    free(labels);
+    for (int i = 0; i < k; i++)
+    {
+        free(centroids[i]);
+    }
+    free(centroids);
+    free(data_points);
 
     return 0;
 }
