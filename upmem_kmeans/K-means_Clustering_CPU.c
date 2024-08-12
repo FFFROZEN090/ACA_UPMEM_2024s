@@ -97,7 +97,7 @@ void kmeans(double** data, int n_points, int dimensions, int k) {
 
     initialize_centroids(data, centroids, n_points, k, dimensions);
 
-    clock_t start_time = clock() //start time
+    clock_t start_time = clock(); //start time
 
     for (int iter = 0; iter < MAX_ITER; iter++) {
         assign_clusters(data, centroids, labels, n_points, k, dimensions);
@@ -117,11 +117,19 @@ void kmeans(double** data, int n_points, int dimensions, int k) {
         }
     }
 
-    clock_t end_time = clock() //end time
+    clock_t end_time = clock(); //end time
 
     // calculate convergence time
     double convergence_time = (double)(end_time - start_time) / CLOCK_PER_SEC;
-    printf("Converging time of K-Means clustering on CPU: %d\n", convergence_time)
+    printf("Converging time of K-Means clustering on CPU: %d\n", convergence_time);
+
+    // calculate average distance
+    double total_distance = 0.0;
+    for (int i = 0; i < n_points; i++) {
+        total_distance += euclidean_distance(data[i], centroids[labels[i]], dimensions);
+    }
+    double average_distance = total_distance / n_points;
+    printf("Average distance to final centroids: %.4f\n", average_distance);
 
     // print the result of clustering
     for (int i = 0; i < n_points; i++) {
